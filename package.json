@@ -1,6 +1,6 @@
 {
   "name": "sass-sections",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Mixin controlling sections with background-color and spacings",
   "repository": {
     "type": "git",
