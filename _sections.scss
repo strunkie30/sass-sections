@@ -2,7 +2,7 @@
 @import 'map-get-deep';
 @import 'index-to-key';
 
-@mixin sections($sectionSpacings, $blockClass: 'section', $sectionBackgroundColors: 'white', 'purple', 'yellow', $backgroundClass: 'bg--') {
+@mixin sections($sectionSpacings, $blockClass: 'section', $sectionBackgroundColors: ('white', 'purple', 'yellow'), $backgroundClass: 'bg--') {
     @if $sectionSpacings == null or $sectionSpacings == '' {
         $sectionSpacings: (
             small: (
