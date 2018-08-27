@@ -1,0 +1,35 @@
+{
+  "name": "sass-sections",
+  "version": "0.0.1",
+  "description": "Mixin controlling sections with background-color and spacings",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strunkie30/sass-sections.git"
+  },
+  "main": "_sections.scss",
+  "scripts": {
+    "ci": "start-server-and-test example http://localhost:8080 test:cypress",
+    "example": "cross-env NODE_ENV=production webpack-dev-server --config webpack.config.js",
+    "test:cypress": "cypress open"
+  },
+  "author": "Kevin Meijer",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "cypress": "^3.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.3",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "start-server-and-test": "^1.7.0",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.6"
+  },
+  "dependencies": {
+    "sass-fluid": "0.0.1"
+  }
+}

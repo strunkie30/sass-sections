@@ -1,0 +1,5 @@
+@function index-to-key($map, $index) {
+    $keys: map-keys($map); 
+
+    @return nth($keys, $index);
+}

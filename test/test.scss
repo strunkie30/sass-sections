@@ -1,0 +1,38 @@
+@import '../_sections.scss';
+
+$sectionSpacings: (
+    small: (
+        min: 30px,
+        max: 50px
+    ), 
+    medium: (
+        min: 40px,
+        max: 60px
+    ), 
+    large: (
+        min: 50px,
+        max: 70px
+    )
+);
+
+$sectionBackgroundColors: 'white', 'purple', 'yellow';
+$blockClass: 'section';
+$backgroundClass: 'bg--';
+
+@include sections($sectionSpacings, $blockClass, $sectionBackgroundColors, $backgroundClass);
+
+.bg--white {
+    background-color: #FFF;
+}
+
+.bg--purple {
+    background-color: purple;
+}
+
+.bg--yellow {
+    background-color: yellow;
+}
+
+.block__inner {
+    border: 1px solid red;
+}

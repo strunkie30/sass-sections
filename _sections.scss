@@ -1,0 +1,79 @@
+@import '~sass-fluid';
+@import 'map-get-deep';
+@import 'index-to-key';
+
+@mixin sections($sectionSpacings, $blockClass: 'section', $sectionBackgroundColors: 'white', 'purple', 'yellow', $backgroundClass: 'bg--') {
+    @if $sectionSpacings == null or $sectionSpacings == '' {
+        $sectionSpacings: (
+            small: (
+                min: 10px,
+                max: 20px
+            ), 
+            medium: (
+                min: 20px,
+                max: 30px
+            ), 
+            large: (
+                min: 30px,
+                max: 40px
+            )
+        );
+    }
+
+    $firstSize: index-to-key($sectionSpacings, 1);
+
+    // use this block for resetting top padding
+    %nospacingtop {
+        padding-top: 0;
+    }
+
+    .#{$blockClass} {
+        // default styling for small block
+        @include fluid(padding, map-get-deep($sectionSpacings, $firstSize, min) 0, map-get-deep($sectionSpacings, $firstSize, max) 0);
+      
+        // loop the other sizes for the default styling
+        @each $index, $spacing in $sectionSpacings {
+            @if $index != $firstSize {
+                &.#{$blockClass}--spacing-#{$index} {
+                    @include fluid(padding, map-get($spacing, min) 0, map-get($spacing, max) 0);
+                }
+            }
+        }
+      
+        // reset padding-top's for each available color
+        @each $color in $sectionBackgroundColors {
+            @each $index, $spacing in $sectionSpacings {
+                $lower: true;
+
+                @each $index2, $spacing2 in $sectionSpacings {
+                    $spacingClass2: '';
+                    $spacingClass: '';
+                    $bgclass: '.#{$backgroundClass}#{$color}';
+
+                    @if $index == $index2 or $lower == false {
+                        $lower: false;
+                    }
+
+                    // render the first size as default value
+                    @if $index != $firstSize {
+                        $spacingClass: '.#{$blockClass}--spacing-#{$index}';
+                    }
+
+                    @if $index2 != $firstSize {
+                        $spacingClass2: '.#{$blockClass}--spacing-#{$index2}';
+                    }
+
+                    &#{$spacingClass}#{$bgclass} + .#{$blockClass}#{$spacingClass2}#{$bgclass} {
+                        @if $index == $index2 or $lower == true {
+                            @extend %nospacingtop;
+                            // padding-top: 0;
+                        }
+                        @else {
+                            @include fluid(padding-top, map-get($spacing2, min) - map-get($spacing, min), map-get($spacing2, max) - map-get($spacing, max));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
