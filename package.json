@@ -1,6 +1,6 @@
 {
   "name": "sass-sections",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Mixin controlling sections with background-color and spacings",
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
   },
   "dependencies": {
     "sass-fluid": "^1.0.0"
-  }
+  },
+  "bundledDependencies": [
+    "sass-fluid"
+  ]
 }
