@@ -63,7 +63,8 @@
                         $spacingClass2: '.#{$blockClass}--spacing-#{$index2}';
                     }
 
-                    &#{$spacingClass}#{$bgclass} + .#{$blockClass}#{$spacingClass2}#{$bgclass} {
+                    &#{$spacingClass}#{$bgclass} + .#{$blockClass}#{$spacingClass2}#{$bgclass},
+                    &#{$spacingClass}#{$bgclass} + [skip-section] + .#{$blockClass}#{$spacingClass2}#{$bgclass} {
                         @if $index == $index2 or $lower == true {
                             @extend %nospacingtop;
                             // padding-top: 0;
